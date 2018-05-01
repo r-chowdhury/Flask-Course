@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api #reqparse is actually not a part of flask restful.
 from flask_jwt import JWT
@@ -7,7 +9,7 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 #a resource  is just a thing our API returns and creates. It's a vague term.
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db' #The SQLAlchemy is going to live at the root folder of our project
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #The SQLAlchemy is going to live at the root folder of our project
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #i have no idea what this does.
 app.secret_key = 'ryhan'
 api = Api(app) #Allow us to easily add resources to it.
