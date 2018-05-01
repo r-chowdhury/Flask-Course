@@ -12,9 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #i have no idea what this d
 app.secret_key = 'ryhan'
 api = Api(app) #Allow us to easily add resources to it.
 
-@app.before_first_request #so you don't have to run the create tables script anymore.
-def create_tables():
-	db.create_all()
+
 
 jwt = JWT(app, authenticate, identity) #creates a new endpoint /auth. we send a username and password and the jwt gets the username and password and sends it to the authenticate function
 
