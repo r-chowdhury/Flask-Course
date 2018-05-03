@@ -6,10 +6,7 @@ class StoreModel(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(80))
     items = db.relationship('ItemModel', lazy='dynamic') #tells python/sql where the relationship is.
-    #lazy = dynamic mean it's not longer an object. It's a query. Until we call the json method, we are not looking into the table.
-    #which means creating stores is more simple.
-    #but every time we call the json method, it looks into the table.
-    #trade off between speed of creating the store and calling the json method.
+ 
     def __init__(self, name):
         self.name = name
 
@@ -23,7 +20,7 @@ class StoreModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
-        #when we retrieve an object from the db that has a particular id, then we can change the object's name. That's an update so this is a post and put method.
+        #This is essentially an update so this is a post and put method.
 
 
     def delete_from_db(self):
