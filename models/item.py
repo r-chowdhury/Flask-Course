@@ -27,9 +27,10 @@ class ItemModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
-        #when we retrieve an object from the db that has a particular id, then we can change the object's name. That's an update so this is a post and put method.
-
-
+        """
+        when we retrieve an object from the db that has a particular id, then we can change the object's name.
+        That's an update so this is a post and put method.
+        """
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
