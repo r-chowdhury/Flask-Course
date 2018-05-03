@@ -25,6 +25,6 @@ api.add_resource(StoreList, '/stores')
 api.add_resource(UserRegister, '/register')
 
 if __name__ == '__main__':
-	from db import db # if we import db and the models at the top. It'll create a circular import which wouldn't work.
-	db.init_app(app)
-	app.run(port=5000, debug = True) #if we import app, we create the flask app. If we import, then we would always run when we don't want it to.
+    from db import db # if we import db and the models at the top. It'll create a circular import which wouldn't work.
+    db.init_app(app)
+    app.run(port=5000, debug = True) #if we import app, we create the flask app. If we import, then we would always run when we don't want it to.
